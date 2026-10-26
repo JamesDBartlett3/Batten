@@ -10,7 +10,7 @@ you're in the dark.
 
 Use it three ways: a plain **CLI**, a full-screen **terminal dashboard**
 (PC/Mac/Linux), or a **local web dashboard** served on your LAN — open it on
-your phone while you're sanding plywood. No cloud, no accounts, no
+your phone while you're boarding up the windows. No cloud, no accounts, no
 subscription.
 
 > Batten: _(verb)_ — to batten down the hatches; to secure everything before a storm.
