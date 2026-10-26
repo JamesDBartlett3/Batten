@@ -7,8 +7,7 @@ mid-storm, it keeps working: it warns you that NOAA is unreachable, tells you
 *why*, and after a few hours offline it builds a worst-case 48-hour outlook
 from the last good data so you can plan while you're in the dark.
 
-> Batten: *(verb)* — to batten down the hatches; to secure everything before a
-> storm.
+> Batten: *(verb)* — to batten down the hatches; to secure everything before a storm.
 
 It was inspired by a real storm-season Discord bot that spent five days
 watching a hurricane for a first-time homeowner — every two hours, day and
@@ -63,7 +62,7 @@ top and turns numbers into judgment.
 
 ```bash
 # 1. Get this repo, no dependencies to install
-git clone <this-repo> && cd batten
+git clone <this-repo> && cd Batten
 python3 -m batten --help          # runs from the checkout
 
 # 2. Install Ollama (https://ollama.com) and pull an open-weight model
