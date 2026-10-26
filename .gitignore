@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+
+# Batten runtime state (never commit household data)
+.batten/
+.batten-demo/
+*-cone.png
+
+# OS / editor
+.DS_Store

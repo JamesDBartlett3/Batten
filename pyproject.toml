@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "batten-weather"
+version = "0.1.0"
+description = "Batten — offline-first severe weather copilot: NOAA storm tracking with a local open-weight model"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Batten contributors" }]
+keywords = [
+    "weather",
+    "hurricane",
+    "noaa",
+    "nws",
+    "ollama",
+    "offline",
+    "emergency-preparedness",
+    "local-llm",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Scientific/Engineering :: Atmospheric Science",
+    "Topic :: Communications :: Chat",
+]
+
+# Zero runtime dependencies. Everything is Python stdlib.
+# The optional local-LLM brain talks to Ollama over plain HTTP (stdlib urllib).
+dependencies = []
+
+[project.scripts]
+batten = "batten.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["batten*"]
+
+[tool.setuptools.package-data]
+batten = ["fixtures/*.json"]
