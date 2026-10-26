@@ -4,7 +4,7 @@
 your location, keeps a running storm log, tracks your household's supply
 readiness, and chats with you about all of it through a local open-weight
 model. When the internet dies mid-storm, it keeps working: it warns you that
-NOAA is unreachable, tells you *why*, and after a few hours offline it builds
+NOAA is unreachable, tells you _why_, and after a few hours offline it builds
 a worst-case 48-hour outlook from the last good data so you can plan while
 you're in the dark.
 
@@ -13,8 +13,7 @@ Use it three ways: a plain **CLI**, a full-screen **terminal dashboard**
 your phone while you're sanding plywood. No cloud, no accounts, no
 subscription.
 
-> Batten: *(verb)* — to batten down the hatches; to secure everything before a
-> storm.
+> Batten: _(verb)_ — to batten down the hatches; to secure everything before a storm.
 
 Inspired by a real storm-season Discord bot that spent five days watching a
 hurricane for a first-time homeowner — every two hours, day and night.
@@ -23,23 +22,23 @@ hurricane for a first-time homeowner — every two hours, day and night.
 
 ## Screenshots
 
-| | |
-|---|---|
+|                                                 |                                                     |
+| ----------------------------------------------- | --------------------------------------------------- |
 | ![TUI dashboard](screenshots/tui-dashboard.png) | ![TUI outage](screenshots/tui-dashboard-outage.png) |
-| *TUI dashboard, storm replay, metric units* | *Same dashboard, 6 h into an outage* |
-| ![Web phone](screenshots/web-phone.png) | ![Web desktop](screenshots/web-desktop.png) |
-| *LAN dashboard on a phone (live NOAA data)* | *The same server from a laptop* |
-| ![Chat](screenshots/chat.png) | ![Worst case](screenshots/worstcase.png) |
-| *Chat on a local model* | *Worst-case 48-h outlook from stale data* |
-| ![Supplies](screenshots/tui-supplies.png) | ![Log](screenshots/tui-log.png) |
-| *Supply readiness checklist* | *Every poll persisted to the weather log* |
+| _TUI dashboard, storm replay, metric units_     | _Same dashboard, 6 h into an outage_                |
+| ![Web phone](screenshots/web-phone.png)         | ![Web desktop](screenshots/web-desktop.png)         |
+| _LAN dashboard on a phone (live NOAA data)_     | _The same server from a laptop_                     |
+| ![Chat](screenshots/chat.png)                   | ![Worst case](screenshots/worstcase.png)            |
+| _Chat on a local model_                         | _Worst-case 48-h outlook from stale data_           |
+| ![Supplies](screenshots/tui-supplies.png)       | ![Log](screenshots/tui-log.png)                     |
+| _Supply readiness checklist_                    | _Every poll persisted to the weather log_           |
 
 More in `screenshots/`: the CLI (`status.png`, `demo.png`,
 `web-phone-supplies.png`, `web-phone-worstcase.png`).
 
 ## Why the open core matters
 
-Everything that makes Batten *Batten* runs on your machine, with open pieces:
+Everything that makes Batten _Batten_ runs on your machine, with open pieces:
 
 - **The brain is an open-weight model running locally** (via
   [Ollama](https://ollama.com) — Llama, Qwen, Gemma, Mistral, anything you've
@@ -56,26 +55,26 @@ Everything that makes Batten *Batten* runs on your machine, with open pieces:
   installs at all. Set it up once, run it forever, pay nothing per query. A
   3B model runs fine on a laptop.
 - **Swappable and inspectable.** Don't like the model? `batten init --model
-  qwen2.5:7b`. Don't like how the watcher phrases things? It's ~60 lines of
+qwen2.5:7b`. Don't like how the watcher phrases things? It's ~60 lines of
   prompt. Want a different worst-case doctrine? The engine is a documented,
   pure-Python module you can read and change. Try that with a subscription
   API.
 
-The deterministic safety loop is deliberately *not* LLM-dependent: trigger
+The deterministic safety loop is deliberately _not_ LLM-dependent: trigger
 detection, connectivity monitoring, and the worst-case math are plain code so
 they work under load, on battery, with the model cold. The open model sits on
 top and turns numbers into judgment.
 
 ## What it does
 
-| When online | When offline |
-| --- | --- |
-| Polls NHC every 2h (30 min when alerts are active or a storm is near) | Keeps retrying every 10 min |
-| Watches alerts from any configured provider: NWS (US), CAP 1.2 feeds (worldwide), or any JSON endpoint | Marks the gap, keeps NHC history |
+| When online                                                                                                                                | When offline                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| Polls NHC every 2h (30 min when alerts are active or a storm is near)                                                                      | Keeps retrying every 10 min                                                                         |
+| Watches alerts from any configured provider: NWS (US), CAP 1.2 feeds (worldwide), or any JSON endpoint                                     | Marks the gap, keeps NHC history                                                                    |
 | Alerts on: new storms, category changes, rapid intensification, landfall statements, watch/warning changes, 300/150 nm proximity crossings | **Warns you immediately** that NOAA is unreachable, with the cause (DNS vs timeout vs server error) |
-| Frames every storm relative to you: distance, bearing, and whether it's **headed toward you**, moving away, or passing | After **6 h** offline, fires a **worst-case 48-hour outlook** built from last-good data |
-| Logs every poll to a human-readable `weather-log.md` | Chat still works — the model is local; it answers from the log |
-| Console + TUI + LAN web dashboard + optional Discord webhook | Console and TUI always work |
+| Frames every storm relative to you: distance, bearing, and whether it's **headed toward you**, moving away, or passing                     | After **6 h** offline, fires a **worst-case 48-hour outlook** built from last-good data             |
+| Logs every poll to a human-readable `weather-log.md`                                                                                       | Chat still works — the model is local; it answers from the log                                      |
+| Console + TUI + LAN web dashboard + optional Discord webhook                                                                               | Console and TUI always work                                                                         |
 
 ## Quick start
 
@@ -170,12 +169,12 @@ note and never takes the others down. Check them with `batten doctor`.
 
 1. **Detection.** Every poll classifies failure: `dns` (internet down /
    captive portal), `timeout` (weak signal, congestion, ISP outage), `http`,
-   or `parse`. NWS not covering your country is *not* an outage — it's
+   or `parse`. NWS not covering your country is _not_ an outage — it's
    reported as a coverage note.
 2. **Immediate warning.** The first failed poll after a good one emits:
-   *"⚠️ Cannot reach NOAA — operating on last known data. Cause: connections
+   _"⚠️ Cannot reach NOAA — operating on last known data. Cause: connections
    timing out… I'll keep retrying every 10 min and build a worst-case outlook
-   if this lasts 6 h."*
+   if this lasts 6 h."_
 3. **Persistence.** Every poll — good or bad — is written to
    `~/.batten/weather-log.md` with source timestamps. That log is the model's
    memory while offline.
@@ -187,8 +186,8 @@ note and never takes the others down. Check them with `batten doctor`.
    every line labeled `ESTIMATE` with the timestamp of the last good data. The
    local model then turns it into a short, calm action plan. If the model is
    down too, the numbers go out as-is.
-5. **Recovery.** When NOAA answers again you get *"✅ NOAA is back after X h
-   offline"*, and the state machine resets.
+5. **Recovery.** When NOAA answers again you get _"✅ NOAA is back after X h
+   offline"_, and the state machine resets.
 
 Run the engine any time: `batten worstcase --outage-hours 7 --narrate`.
 
@@ -314,5 +313,5 @@ UI strings, a one-file release with PyInstaller.
 
 MIT. Data by NOAA/NWS (US public domain). Not affiliated with NOAA.
 
-*For the two that came through while this was being written — and for whoever
-reads their storm log by flashlight.*
+_For the two that came through while this was being written — and for whoever
+reads their storm log by flashlight._
