@@ -24,14 +24,14 @@ hurricane for a first-time homeowner — every two hours, day and night.
 
 |                                                 |                                                     |
 | ----------------------------------------------- | --------------------------------------------------- |
-| ![TUI dashboard](screenshots/tui-dashboard.png) | ![TUI outage](screenshots/tui-dashboard-outage.png) |
 | _TUI dashboard, storm replay, metric units_     | _Same dashboard, 6 h into an outage_                |
-| ![Web phone](screenshots/web-phone.png)         | ![Web desktop](screenshots/web-desktop.png)         |
+| ![TUI dashboard](screenshots/tui-dashboard.png) | ![TUI outage](screenshots/tui-dashboard-outage.png) |
 | _LAN dashboard on a phone (live NOAA data)_     | _The same server from a laptop_                     |
-| ![Chat](screenshots/chat.png)                   | ![Worst case](screenshots/worstcase.png)            |
+| ![Web phone](screenshots/web-phone.png)         | ![Web desktop](screenshots/web-desktop.png)         |
 | _Chat on a local model_                         | _Worst-case 48-h outlook from stale data_           |
-| ![Supplies](screenshots/tui-supplies.png)       | ![Log](screenshots/tui-log.png)                     |
+| ![Chat](screenshots/chat.png)                   | ![Worst case](screenshots/worstcase.png)            |
 | _Supply readiness checklist_                    | _Every poll persisted to the weather log_           |
+| ![Supplies](screenshots/tui-supplies.png)       | ![Log](screenshots/tui-log.png)                     |
 
 More in `screenshots/`: the CLI (`status.png`, `demo.png`,
 `web-phone-supplies.png`, `web-phone-worstcase.png`).
